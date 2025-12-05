@@ -1,85 +1,77 @@
-CRUD Inline - Sistema PHP com Bootstrap
+# CRUD Inline - Sistema PHP com Bootstrap
 
-Sistema de gestão CRUD (Create, Read, Update, Delete) implementado em PHP com interface inline, permitindo edição direta nas tabelas.
+Sistema de gestão CRUD (Create, Read, Update, Delete) implementado em
+**PHP** com interface **inline**, permitindo edição direta nas tabelas.
 
-📁 Estrutura do Projeto
-├── conexao.php              # Configuração da conexão à base de dados
-├── index.php                # Página inicial do CRUD (ou página de login)
-├── login.php                # Processamento de login
-├── erro_login.php           # Página de erro de autenticação
-│
-├── alunos_form.php          # Formulário para criar novo aluno
-├── alunos_inserir.php       # Processa inserção de alunos
-├── alunos_editar.php        # Processa edição de alunos
-├── alunos_apagar.php        # Processa eliminação de alunos
-├── alunos_lista.php         # Lista de alunos com edição inline
-│
-├── produtos_form.php        # Formulário para criar novo produto
-├── produtos_inserir.php     # Processa inserção de produtos
-├── produtos_editar.php      # Processa edição de produtos
-├── produtos_apagar.php      # Processa eliminação de produtos
-└── produtos_lista.php       # Lista de produtos com edição inline
+## 📁 Estrutura do Projeto
 
-🛠️ Tecnologias Utilizadas
+    ├── conexao.php              # Configuração da conexão à base de dados
+    ├── index.php                # Página inicial do CRUD (ou página de login)
+    ├── login.php                # Processamento de login
+    ├── erro_login.php           # Página de erro de autenticação
+    │
+    ├── alunos_form.php          # Formulário para criar novo aluno
+    ├── alunos_inserir.php       # Processa inserção de alunos
+    ├── alunos_editar.php        # Processa edição de alunos
+    ├── alunos_apagar.php        # Processa eliminação de alunos
+    ├── alunos_lista.php         # Lista de alunos com edição inline
+    │
+    ├── produtos_form.php        # Formulário para criar novo produto
+    ├── produtos_inserir.php     # Processa inserção de produtos
+    ├── produtos_editar.php      # Processa edição de produtos
+    ├── produtos_apagar.php      # Processa eliminação de produtos
+    └── produtos_lista.php       # Lista de produtos com edição inline
 
-PHP 7+ com PDO
+## 🛠️ Tecnologias Utilizadas
 
-MySQL
+-   PHP 7+ com PDO\
+-   MySQL\
+-   Bootstrap 5.3.3\
+-   HTML5 e CSS3
 
-Bootstrap 5.3.3
+## 📋 Funcionalidades
 
-HTML5 e CSS3
+### 🔐 Sistema de Autenticação
 
-📋 Funcionalidades
-🔐 Sistema de Autenticação
+-   Página de login com validação de credenciais
+-   Redirecionamento para página de erro em caso de falha
+-   Uso de prepared statements contra SQL Injection
 
-Página de login com validação de credenciais
+### 🎓 Módulo de Alunos
 
-Redirecionamento para página de erro em caso de falha
+-   Listagem completa
+-   Criação via formulário
+-   Edição inline
+-   Eliminação com confirmação
+-   Validação e sanitização
 
-Uso de prepared statements para evitar SQL Injection
+### 📦 Módulo de Produtos
 
-🎓 Módulo de Alunos
+-   Listagem completa
+-   Criação via formulário
+-   Edição inline
+-   Eliminação com confirmação
+-   Validação de preço positivo
 
-Listagem: Tabela com todos os alunos
+## 🔧 Configuração
 
-Criação: Formulário para novo aluno
+### 1. Base de Dados
 
-Edição Inline: Alteração direta na tabela
+Importar o ficheiro `schema.sql`.
 
-Eliminação: Com confirmação via JavaScript
+### 2. Configuração da Conexão
 
-Validação: Campos obrigatórios e sanitização de dados
-
-📦 Módulo de Produtos
-
-Listagem: Tabela com todos os produtos
-
-Criação: Formulário dedicado
-
-Edição Inline: Alteração direta na linha
-
-Eliminação: Com confirmação via JavaScript
-
-Validação: Preço positivo e campos obrigatórios
-
-🔧 Configuração
-1. Base de Dados
-
-Importar o ficheiro schema.sql no phpMyAdmin.
-
-2. Configuração da Conexão
-
-Editar o ficheiro conexao.php:
-
+``` php
 $pdo = new PDO(
     "mysql:host=SEU_HOST;dbname=SEU_DATABASE;charset=utf8",
     "SEU_USUARIO",
     "SUA_SENHA"
 );
+```
 
-3. Tabelas Necessárias
--- Tabela de alunos
+### 3. Tabelas Necessárias
+
+``` sql
 CREATE TABLE alunos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -87,7 +79,6 @@ CREATE TABLE alunos (
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Tabela de produtos
 CREATE TABLE produtos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     produto VARCHAR(100) NOT NULL,
@@ -95,60 +86,32 @@ CREATE TABLE produtos (
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Tabela de utilizadores (login)
 CREATE TABLE utilizadores (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
 );
+```
 
-🚀 Como Usar
-Primeiro Acesso
+## 🚀 Como Usar
 
-Aceder a index.php via navegador
+### Gestão de Alunos e Produtos
 
-Efetuar login com credenciais da tabela utilizadores
+-   Criar novos registos
+-   Editar diretamente na tabela
+-   Eliminar com confirmação
 
-Após sucesso, será redirecionado para o dashboard do CRUD
+## 🔒 Segurança
 
-Gestão de Alunos
+-   Prepared statements
+-   Sanitização de dados
+-   Validação de inputs
+-   Sessões PHP
 
-Aceder a CRUD Inline - Alunos
+## 🎨 Interface
 
-Criar novo aluno via botão + Novo Aluno
+-   Design responsivo com Bootstrap 
+-   Navbar fixa e navegação intuitiva
+-   Formulários com validação
+-   Tabelas com edição inline
 
-Editar diretamente na tabela
-
-Eliminar com confirmação
-
-Gestão de Produtos
-
-Aceder a CRUD Inline - Produtos
-
-Criar novo produto via + Novo Produto
-
-Editar inline
-
-Eliminar com confirmação
-
-🔒 Segurança
-
-SQL Injection: protegido com prepared statements
-
-XSS: sanitização com htmlspecialchars()
-
-Validação de Inputs no servidor
-
-Sessões PHP para gestão de login
-
-🎨 Interface
-
-Design responsivo com Bootstrap 5
-
-Navbar fixa e navegação intuitiva
-
-Formulários com validação
-
-Tabelas com edição inline
-
-Alertas visuais para confirmação e sucesso
