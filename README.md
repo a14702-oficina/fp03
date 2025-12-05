@@ -24,9 +24,9 @@ Sistema de gestão CRUD (Create, Read, Update, Delete) implementado em
 
 ## 🛠️ Tecnologias Utilizadas
 
--   PHP 7+ com PDO\
--   MySQL\
--   Bootstrap 5.3.3\
+-   PHP 7+ com PDO
+-   MySQL
+-   Bootstrap
 -   HTML5 e CSS3
 
 ## 📋 Funcionalidades
